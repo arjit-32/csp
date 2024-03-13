@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allWebDev: CollectionEntry<'webdev'>[] = await getCollection('webdev');
+const course_info = {};
+
+for (const item of allWebDev) {
+    course_info[item.data.course] = course_info[item.data.course]+1 || 1;
+}
+
+---
+
+<BaseLayout title="webdev">
+    <h1>Web Development</hjson>
+    <p>
+        This is a collection of web development courses.
+        {JSON.stringify(course_info)}
+    </p>
+</BaseLayout>

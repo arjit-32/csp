@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allWebDev: CollectionEntry<'webdev'>[] = await getCollection('webdev');
+const upandrunning = [];
+
+if (allWebDev.length > 0) {
+    allWebDev.forEach((item) => {
+        if (item.data.course === 'upandrunning') {
+            upandrunning.push(item);
+        }
+    });
+}
+
+console.log(upandrunning);
+---
+
+<BaseLayout title="webdev">
+    <h1>Web Development</hjson>
+   
+    
+        {upandrunning.map((item) => (
+        <a href={`/webdev/${item.slug}`}>
+            <h2>{item.data.title}</h2>
+        </a>
+        ))}
+</BaseLayout>
