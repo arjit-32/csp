@@ -1,11 +1,20 @@
 ---
-import Navbar from '../components/Navbar.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Card, Notification } from 'accessible-astro-components';
 ---
 <BaseLayout title="test">
-<Navbar />
+    <div>
+        <h1>Turing Tribe</h1>
+        <h2>Crafting curiosity in Engineers</h2>
+    </div>
 
+    <div>
+        <h2>Subjects</h1>
+        <ul>
+            <li> <a href="subjects/webdev"> webdev </a> </li>
+            <li> <a href="subjects/systemdesign"> systemdesign++ </a> </li>
+            <li> <a href="subjects/problemsolving"> problemsolving </a> </li>
+        </ul>
+    </div>
 </BaseLayout>
 
 

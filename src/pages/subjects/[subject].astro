@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pages = [
+    {
+      slug: "systemdesign",
+      subject: "systemdesign",
+      title: "System Design",
+      courses: ["systemdesign", "AWS"],
+    },
+    {
+      slug: "webdev",
+      subject: "webdev",
+      title: "Web Development",
+      courses: ["htmlandcss", "upandrunning"],
+    },
+    {
+      slug: "problemsolving",
+      subject: "problemsolving",
+      title: "Problem Solving",
+      courses: ["algorithms", "datastructures"],
+    }
+  ];
+  return pages.map(({ slug, subject, title, courses }) => {
+    return {
+      params: { slug , subject},
+      props: { title , courses },
+    };
+  });
+}
+
+const { title , courses } = Astro.props;
+
+---
+<BaseLayout title='test'>
+    <h1>INDIVIDUAL SUBJECT PAGE</h1>
+    <h2> {title} </h2>
+    <ul>
+      {courses.map((course) => {
+        return (
+          <li>
+            <a href={`/course/${course}`}>{course}</a>
+          </li>
+        );
+      })}
+    </ul>
+
+
+    <!-- <ul>
+      {publishedBlogEntries.map((entry) => {
+        return (
+          <li>
+            <a href={`${entry.slug}`}>{entry.data.title}</a>
+          </li>
+        );
+      })}
+    </ul> -->
+
+
+  
+</BaseLayout>
+  

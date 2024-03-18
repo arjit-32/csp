@@ -4,4 +4,4 @@ description: 'systemdesign'
 course: 'aws'
 ---
 
-## Lecture 2: HTML and CSS Basics
+## Lecture 2: aws services
