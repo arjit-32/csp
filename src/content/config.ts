@@ -1,29 +1,22 @@
-// 1. Import utilities from `astro:content`
-import { z, defineCollection } from 'astro:content';
+import { defineCollection, z } from 'astro:content'
+import { CATEGORIES } from '@/data/categories'
 
-// 2. Define a `type` and `schema` for each collection
-const webdev = defineCollection({
-  type: 'content', 
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    course: z.string(),
-    publishDate: z.date().optional()
-  }),
-});
+const blog = defineCollection({
+	// Type-check frontmatter using a schema
+	schema: ({ image }) =>
+		z.object({
+			title: z.string().max(80),
+			description: z.string(),
+			// Transform string to Date object
+			pubDate: z
+				.string()
+				.or(z.date())
+				.transform((val) => new Date(val)),
+			heroImage: image(),
+			category: z.enum(CATEGORIES),
+			tags: z.array(z.string()),
+			draft: z.boolean().default(false)
+		})
+})
 
-const systemdesign = defineCollection({
-  type: 'content', 
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    course: z.string(),
-    publishDate: z.date().optional()
-  }),
-});
-
-// 3. Export a single `collections` object to register your collection(s)
-export const collections = {
-   'webdev': webdev,
-    'systemdesign': systemdesign
-};
+export const collections = { blog }
