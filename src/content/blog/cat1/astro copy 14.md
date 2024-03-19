@@ -1,10 +1,10 @@
 ---
-title: 'MacBook'
-description: 'The new MacBook Pro 2022 is here. With the Apple M2 chip, a new design, and more, the new MacBook Pro is the best laptop Apple has ever made.'
+title: 'Test'
+description: 'TypeScript2 description here 2'
 pubDate: 'Jul 02 2022'
-heroImage: '../../assets/images/book.jpg'
-category: 'Category 4'
-tags: ['PC']
+heroImage: '../../../assets/images/placeholder-about.jpg'
+category: 'Category 1'
+tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
 ---
 
 **If you know HTML, you already know enough to write your first Astro component.**

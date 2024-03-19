@@ -1,10 +1,10 @@
 ---
-title: 'Components'
-description: 'Astro components are HTML templates with superpowers. They are a superset of HTML, with support for including components and JavaScript expressions.'
+title: 'Test'
+description: 'TypeScript2 description here 2'
 pubDate: 'Jul 02 2022'
-heroImage: '../../assets/images/banner.jpg'
-category: 'Category 3'
-tags: ['JavaScript', 'css', 'HTML5', 'GitHub', 'Ordenador']
+heroImage: '../../../../assets/images/placeholder-about.jpg'
+category: 'Category 13'
+tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
 ---
 
 **If you know HTML, you already know enough to write your first Astro component.**

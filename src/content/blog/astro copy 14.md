@@ -1,8 +1,8 @@
 ---
-title: 'Astro Components'
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non dia'
+title: 'Test'
+description: 'TypeScript2 description here 2'
 pubDate: 'Jul 02 2022'
-heroImage: '../../assets/images/te.jpg'
+heroImage: '../../assets/images/placeholder-about.jpg'
 category: 'Category 2'
 tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
 ---

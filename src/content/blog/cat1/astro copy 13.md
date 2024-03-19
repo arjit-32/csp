@@ -1,8 +1,8 @@
 ---
-title: 'TypeScript2'
+title: 'Test'
 description: 'TypeScript2 description here 2'
 pubDate: 'Jul 02 2022'
-heroImage: '../../assets/images/placeholder-about.jpg'
+heroImage: '../../../assets/images/placeholder-about.jpg'
 category: 'Category 1'
 tags: ['JavaScript', 'css', 'HTML5', 'GitHub']
 ---
