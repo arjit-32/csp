@@ -4,7 +4,6 @@ import FormattedDate from '@/components/FormattedDate'
 import BaseLayout from '@/layouts/BaseLayout'
 import Tag from '@/components/Tag'
 import type { MarkdownHeading } from 'astro'
-import { Image } from 'astro:assets'
 
 type Props = {
 	id: CollectionEntry<'blog'>['id']
@@ -14,17 +13,12 @@ type Props = {
 }
 
 const { data, readTime, headings, id } = Astro.props
-const { title, description, pubDate, heroImage, tags } = data
+const { title, description, pubDate, tags } = data
 
 const articleDate = pubDate.toISOString()
 ---
 
-<BaseLayout
-	title={title}
-	description={description}
-	image={heroImage?.src}
-	articleDate={articleDate}
->
+<BaseLayout title={title} description={description} articleDate={articleDate}>
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-2'>
@@ -47,7 +41,7 @@ const articleDate = pubDate.toISOString()
 		</header>
 
 		<>
-			{
+			<!-- {
 				heroImage && (
 					<Image
 						src={heroImage}
@@ -60,7 +54,7 @@ const articleDate = pubDate.toISOString()
 						alt={`img of ${title}`}
 					/>
 				)
-			}
+			} -->
 		</>
 
 		<hr />
