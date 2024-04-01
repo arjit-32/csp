@@ -1,7 +1,12 @@
 ---
-const today = new Date()
+import Section from './Section.astro';
+
+const year = new Date();
 ---
 
-<footer class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
-	&copy; {today.getFullYear()} Turing Tribe. All rights reserved.
-</footer>
+<Section>
+	<footer class="text-center">
+		© {year.getFullYear()} - <a class="underline hover:text-orange-600" href="/imprint/">Imprint</a> - made with
+		♥️ by <a class="underline hover:text-orange-600" href="http://nicdun.dev" target="_blank">nicdun.dev</a> 
+	</footer>
+</Section>
