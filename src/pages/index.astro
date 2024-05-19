@@ -8,7 +8,7 @@ import { sortPostsByDate } from '@/utils/data.util';
 const { title } = AppConfig;
 const { description } = AppConfig;
 
-const allPosts = await Astro.glob('./posts/*.md');
+const allPosts = await Astro.glob('./posts/**/*.md');
 allPosts.sort(sortPostsByDate);
 const latestPosts = allPosts.slice(0, 3);
 ---

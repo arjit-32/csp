@@ -2,25 +2,19 @@
 import Section from './Section.astro';
 import Social from './Social.astro';
 
-const site = Astro.site;
 ---
 
 <Section>
 	<br />
-	<p class="pb-2 pt-6 text-4xl font-bold">Henlo to the Computer Science Primer 🚀</p>
+	<p class="pb-2 pt-6 text-4xl font-bold">Computer Science Primer 🚀</p>
 	<div class="text-sm">
 		<p class="py-2">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet <span class="font-black text-orange-600">Angular</span> adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet consectetur <span class="font-black text-orange-600">Angular</span> elit. Tenetur vero esse non molestias eos <span class="font-black text-orange-600">Angular</span>, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-		</p>
-		<p class="py-2">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet <span class="font-black text-orange-600">Angular</span> adipisicing elit. Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
-		</p>
-		<p class="py-2">
-			Tenetur vero esse non molestias eos excepturi, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.Lorem ipsum dolor sit amet consectetur <span class="font-black text-orange-600">Angular</span> elit. Tenetur vero esse non molestias eos <span class="font-black text-orange-600">Angular</span>, inventore atque cupiditate. Sed voluptatem quas omnis culpa, et odit.
+			Welcome to the CSP, its a technical blog <i>(for now)</i>. Topics covered are Web Development, System Design, Data structures and algorithms and many more. 
+			You can checkout the courses to get an organized experience for any subject.
 		</p>
 	</div>
 	<div class="flex">
-		<Social href="https://github.com/#">
+		<Social href="https://github.com/arjit-32/csp">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-4 w-4"
@@ -32,7 +26,7 @@ const site = Astro.site;
 				></path>
 			</svg>
 		</Social>
-		<Social href="https://www.linkedin.com/#">
+		<Social href="https://www.linkedin.com/company/computerscienceprimer/">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-4 w-4"
@@ -43,14 +37,6 @@ const site = Astro.site;
 					d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"
 				></path>
 			</svg>
-		</Social>
-		<Social href={`${site}rss.xml`}>
-			<svg viewBox="0 0 24 24" width="1.2em" height="1.2em"
-				><path
-					fill="currentColor"
-					d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1Z"
-				></path></svg
-			>
 		</Social>
 	</div>
 </Section>
