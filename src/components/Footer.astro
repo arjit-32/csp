@@ -1,11 +1,7 @@
 ---
-import Section from './Section.astro';
-
+const today = new Date()
 ---
 
-<Section>
-	<footer class="text-center">
-		Made with
-		♥️ by <a class="underline hover:text-orange-600" href="" target="_blank">Arjit Sharma</a> 
-	</footer>
-</Section>
+<footer class='flex justify-center items-center w-full px-16 h-28 border-t-2'>
+	&copy; {today.getFullYear()} Made with ❤️ by <a href='https://arjit-32.github.io' class='ml-1 font-medium text-sky-500 ' target="_blank">Arjit Sharma</a>
+</footer>

@@ -1,0 +1,22 @@
+---
+import Title from './Title.astro'
+import Shape from './icons/Shape.astro'
+type Props = {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<div class='flex flex-col justify-center items-center gap-2 title min-h-[240px]'>
+	<!-- <Shape /> -->
+	<Title>{title}</Title>
+	<p class="font-thin mt-5">
+		Welcome to <b>Computer Science Primer</b>. This website aims to introduce you to the fascinating world of Computer Science. 
+		Our goal is not to turn you into a mere <i>Web Developer or an algorithm-memorizing robot</i>. 
+		Instead, we strive to help you 
+		<span class="px-2 font-normal tracking-wide border-b-2 border-teal-400 bg-slate-200 dark:bg-zinc-700">think like an Innovator</span>, 
+		<span class=" px-2 font-normal border-b-2 border-teal-400 bg-slate-200 dark:bg-zinc-700">dream like an Artist</span>, 
+		and <span class=" px-2 font-normal border-b-2 border-teal-400 bg-slate-200 dark:bg-zinc-700">execute like an Engineer</span>.
+	</p>
+</div>

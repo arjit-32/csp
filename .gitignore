@@ -1,8 +1,13 @@
 # build output
 dist/
+# generated types
+.astro/
 
 # dependencies
 node_modules/
+
+
+tina-lock.json
 
 # logs
 npm-debug.log*
@@ -17,3 +22,5 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+node_modules

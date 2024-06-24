@@ -1,19 +1,66 @@
 ---
-import { AppConfig } from '@/utils/AppConfig';
-import Base from '@/layouts/Base.astro';
-import Hero from '@/components/Hero.astro';
-import LatestPosts from '@/components/LatestPosts.astro';
-import { sortPostsByDate } from '@/utils/data.util';
+import TitlePage from '@/components/TitlePage'
+import BaseLayout from '@/layouts/BaseLayout'
+import Card from '@/components/Card'
+import { getPosts } from '@/utils'
 
-const { title } = AppConfig;
-const { description } = AppConfig;
-
-const allPosts = await Astro.glob('./posts/**/*.md');
-allPosts.sort(sortPostsByDate);
-const latestPosts = allPosts.slice(0, 3);
+const MAX_POSTS = 5 // max number of posts to show on the home page
+const posts = await getPosts(MAX_POSTS)
 ---
 
-<Base head={{ title, description }}>
-	<Hero />
-	<LatestPosts posts={latestPosts} />
-</Base>
+<BaseLayout title='Home'>
+	<TitlePage title='Computer Science Primer' />
+
+	<h1 class="title text-4xl font-semibold"> Paths </h1>
+	<div class="flex">
+	<Card title='Problem Solving' 
+	description='Learn how to solve problems using algorithms and data structures.' 
+	links={[{ href: '/problem-solving', text: 'Start Path' }]} />
+
+	
+	<Card title='Development' 
+	description='Learn to build web applications using modern tools and technologies.' 
+	links={[{ href: '/development', text: 'Start Path' }]} />
+
+	
+	<Card title='Development Plus Plus' 
+	description='Learn about System Design, Devops, and more to become a well-rounded developer.' 
+	links={[{ href: '/development-plus', text: 'Start Path' }]} />
+
+	
+	<Card title='Core Computer Science' 
+	description='Learn about the core concepts of computer science like Operating Systems, Networking, and more.' 
+	links={[{ href: '/core', text: 'Start Path' }]} />
+
+	</div>
+
+	<!-- <h1 class="title text-4xl font-semibold"> Recent Posts </h1> -->
+	<!-- <div class="flex flex-wrap">
+		{posts.map((post) => (
+			<Card title={post.title} description={post.description} links={[{ href: post.slug, text: 'Read Post' }]} />
+		))}
+	</div> -->
+
+
+	<!-- <h1 class="title text-4xl font-semibold"> Progress </h1> -->
+
+
+</BaseLayout>
+
+<script>
+	import { animate } from 'motion'
+	const showAnimations = localStorage.getItem('animations') === 'true'
+
+	if (showAnimations) {
+		animate(
+			'.title',
+			{ y: [80, 0], opacity: [0, 1] },
+			{
+				duration: 2.5,
+				opacity: { duration: 3 },
+
+				offset: [0, 0.55, 0.75]
+			}
+		)
+	}
+</script>
