@@ -6,6 +6,8 @@ import { getEntry } from 'astro:content';
 import SButton from '@/components/mdx/SButton';
 import { Code } from 'astro/components';
 import CoursePost from '@/layouts/CoursePost';
+import Share from '@/components/Share';
+import TableOfContents from '@/components/TableOfContents';
 
 
 export async function getStaticPaths() {
@@ -57,7 +59,16 @@ const { Content, headings, remarkPluginFrontmatter } = await post.render()
 	readTime={remarkPluginFrontmatter.minutesRead}
 >
 
-<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'></div>
+
+
+
+<div class='grid grid-cols-1 md:grid-cols-[20%_60%_20%] gap-10 mt-8'>
+
+  <div>
+    <h1 class='text-4xl font-bold dark:text-gray-100'>{post.data.title}</h1>
+    <p class='text-lg dark:text-gray-300'>{post.data.description}</p>
+  </div>
+
 <article class='max-w-full w-full'>
   <div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
     <Content components={{ pre: Code, SButton }} />
@@ -66,5 +77,12 @@ const { Content, headings, remarkPluginFrontmatter } = await post.render()
   <footer>
   </footer>
 </article>
+
+<aside class='md:flex flex-col gap-8 hidden'>
+  <Share />
+  <div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
+    {headings && headings.length > 0 && <TableOfContents {headings} />}
+  </div>
+</aside>
 </div>
 </CoursePost>
