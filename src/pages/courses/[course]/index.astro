@@ -1,0 +1,34 @@
+---
+import ListPosts from '@/components/ListPosts';
+import TitlePage from '@/components/TitlePage';
+import { COURSES } from '@/data/courses';
+import BaseLayout from '@/layouts/BaseLayout';
+import { getCourseMeta } from '@/utils';
+
+export async function getStaticPaths() {
+    return COURSES.map((course) => ({
+		params: { course: course },
+        props: { course }
+	}))
+}
+
+const { course } = Astro.props
+
+const courseMeta = await getCourseMeta(course);
+---
+
+<BaseLayout title={courseMeta}>
+    <!-- {
+        JSON.stringify(courseMeta[0].data)
+    } -->
+    <TitlePage title={courseMeta[0].data.title} />
+    <ul>{
+        courseMeta[0].data.navbar.map((item)=>{
+            return item.link.map((i)=>{
+                return <li><a href={`${course}/${i}`}>{i}</a></li>
+            })
+        })
+    }</ul>
+</BaseLayout>
+
+

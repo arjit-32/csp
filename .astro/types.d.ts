@@ -193,11 +193,74 @@ declare module 'astro:content' {
   data: InferEntrySchema<"blog">
 } & { render(): Render[".mdx"] };
 };
+"courses": {
+"api-design/lec1.md": {
+	id: "api-design/lec1.md";
+  slug: "api-design/lec1";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"api-design/lec2.md": {
+	id: "api-design/lec2.md";
+  slug: "api-design/lec2";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"api-design/lec3.md": {
+	id: "api-design/lec3.md";
+  slug: "api-design/lec3";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"api-design/lec4.md": {
+	id: "api-design/lec4.md";
+  slug: "api-design/lec4";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"api-design/yoyo.md": {
+	id: "api-design/yoyo.md";
+  slug: "api-design/yoyo";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"spring-boot-intro/lec1.md": {
+	id: "spring-boot-intro/lec1.md";
+  slug: "spring-boot-intro/lec1";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+"spring-boot-intro/lec2.md": {
+	id: "spring-boot-intro/lec2.md";
+  slug: "spring-boot-intro/lec2";
+  body: string;
+  collection: "courses";
+  data: InferEntrySchema<"courses">
+} & { render(): Render[".md"] };
+};
 
 	};
 
 	type DataEntryMap = {
-		
+		"coursesMeta": {
+"api-design": {
+	id: "api-design";
+  collection: "coursesMeta";
+  data: InferEntrySchema<"coursesMeta">
+};
+"spring-boot-intro": {
+	id: "spring-boot-intro";
+  collection: "coursesMeta";
+  data: InferEntrySchema<"coursesMeta">
+};
+};
+
 	};
 
 	type AnyEntryMap = ContentEntryMap & DataEntryMap;

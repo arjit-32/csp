@@ -13,24 +13,16 @@ export const getPosts = async (max?: number) => {
 		.slice(0, max)
 }
 
-export const getTags = async () => {
-	const posts = await getCollection('blog')
-	const tags = new Set()
-	posts.forEach((post) => {
-		post.data.tags.forEach((tag) => {
-			tags.add(tag.toLowerCase())
-		})
-	})
 
-	return Array.from(tags)
+export const getCourseMeta = async (courseName?: string) => {
+	return (await getCollection('coursesMeta'))
+	.filter((course) => course.id === courseName)
 }
 
-export const getPostByTag = async (tag: string) => {
-	const posts = await getPosts()
-	const lowercaseTag = tag.toLowerCase()
-	return posts.filter((post) => {
-		return post.data.tags.some((postTag) => postTag.toLowerCase() === lowercaseTag)
-	})
+
+export const getCourseContent = async (courseName?: string) => {
+	return (await getCollection("courses"))
+	.filter((course) => course.data.course === courseName)
 }
 
 export const filterPostsByCategory = async (category: string) => {

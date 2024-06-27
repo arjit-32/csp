@@ -1,0 +1,14 @@
+{
+    "title": "API Design",
+    "description": "Learn how to design APIs that developers love to use.",
+    "navbar": [
+        {
+            "subheading": "Introduction",
+            "link": ["lec1", "lec2"]
+        },
+        {
+            "subheading": "Creation",
+            "link": ["lec3", "lec4", "yoyo"]
+        }
+    ]
+}

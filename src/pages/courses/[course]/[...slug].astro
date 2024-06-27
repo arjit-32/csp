@@ -1,0 +1,70 @@
+---
+import { getCourseContent } from '@/utils';
+import { COURSES } from '@/data/courses';
+import { getCourseMeta } from '@/utils';
+import { getEntry } from 'astro:content';
+import SButton from '@/components/mdx/SButton';
+import { Code } from 'astro/components';
+import CoursePost from '@/layouts/CoursePost';
+
+
+export async function getStaticPaths() {
+
+  const staticPaths =[];
+
+  for(const course of COURSES){
+
+    const courseMeta = await getCourseMeta(course);
+    if(courseMeta.length === 0){
+      continue;
+    }
+    const navbar = courseMeta[0].data.navbar;
+    // Gather all links from the navbar
+    for(const nav of navbar){
+      if(nav.link){
+        for(const link of nav.link){
+          staticPaths.push({
+            params: {
+              course: course,
+              slug: link
+            },
+            props: {
+              course: course,
+              lecture: link
+            }
+          })
+        }
+      }
+    }
+
+  }
+
+  return staticPaths;
+}
+
+
+const { course, lecture } = Astro.props;
+const slug = `${course}/${lecture}`;
+
+const post = await getEntry('courses', slug);
+
+const { Content, headings, remarkPluginFrontmatter } = await post.render()
+---
+<CoursePost
+	id={post.id}
+	data={post.data}
+	headings={headings}
+	readTime={remarkPluginFrontmatter.minutesRead}
+>
+
+<div class='grid grid-cols-1 md:grid-cols-[20%_auto] gap-10 mt-8'></div>
+<article class='max-w-full w-full'>
+  <div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
+    <Content components={{ pre: Code, SButton }} />
+  </div>
+
+  <footer>
+  </footer>
+</article>
+</div>
+</CoursePost>

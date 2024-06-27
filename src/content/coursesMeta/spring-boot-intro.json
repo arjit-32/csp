@@ -1,0 +1,10 @@
+{
+    "title": "Spring Boot Intro",
+    "description": "Learn how to create a Spring Boot application.",
+    "navbar": [
+        {
+            "subheading": "Introduction",
+            "link": ["lec1", "lec2"]
+        }
+    ]
+}
