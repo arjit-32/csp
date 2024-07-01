@@ -1,5 +1,4 @@
 ---
-import ListPosts from '@/components/ListPosts';
 import TitlePage from '@/components/TitlePage';
 import { COURSES } from '@/data/courses';
 import BaseLayout from '@/layouts/BaseLayout';
@@ -7,28 +6,42 @@ import { getCourseMeta } from '@/utils';
 
 export async function getStaticPaths() {
     return COURSES.map((course) => ({
-		params: { course: course },
+        params: { course: course },
         props: { course }
-	}))
+    }))
 }
 
-const { course } = Astro.props
+const { course } = Astro.props;
 
 const courseMeta = await getCourseMeta(course);
 ---
 
 <BaseLayout title={courseMeta}>
-    <!-- {
-        JSON.stringify(courseMeta[0].data)
-    } -->
-    <TitlePage title={courseMeta[0].data.title} />
-    <ul>{
-        courseMeta[0].data.navbar.map((item)=>{
-            return item.link.map((i)=>{
-                return <li><a href={`${course}/${i}`}>{i}</a></li>
-            })
-        })
-    }</ul>
+    <div class="mx-auto mt-8">
+        <TitlePage title={courseMeta[0].data.title}>
+            {courseMeta[0].data.description}
+        </TitlePage>
+
+        <div class="mt-8">
+            {courseMeta[0].data.navbar.map((item, index) => (
+                <div class="mb-8">
+                    <div class="flex items-center justify-center mb-4">
+                        <h2 class="text-2xl font-semibold">{item.subheading}</h2>
+                    </div>
+                    <ul class="list-none space-y-2 text-center">
+                        {item.link.map((i) => (
+                            <li class="mb-1">
+                                <a href={`${course}/${i}`} class="text-blue-600 hover:underline flex items-center justify-center space-x-2">
+                                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4H9l4-8h2v8h3l-4 8z"></path>
+                                    </svg>
+                                    <span>{i}</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
+    </div>
 </BaseLayout>
-
-

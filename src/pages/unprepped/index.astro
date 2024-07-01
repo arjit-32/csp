@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import TitlePage from '@/components/TitlePage'
+---
+
+<BaseLayout title='Unprepped'>
+	<TitlePage title='Unprepped'>
+		<p>All the raw learnings/teaching in one place.</p>
+		<p>Checkout micro-blogs on Twitter or raw explanation videos</p>
+	</TitlePage>
+	<div class="flex flex-col sm:flex-row">
+	<div class="w-[40%] m-auto mt-5">
+		<a class="twitter-timeline" data-lang="en" data-theme="dark" href="https://twitter.com/cspbyarjit?ref_src=twsrc%5Etfw">Tweets by cspbyarjit</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+	</div>
+	<div class="w-[40%] m-auto mt-5">
+		<iframe width="720" height="405" src="https://www.youtube.com/embed/?listType=playlist&list=PLWKjhJtqVAbn21gs5UnLhCQ82f923WCgM"  allowfullscreen>
+	</div>	
+</div>
+</BaseLayout>

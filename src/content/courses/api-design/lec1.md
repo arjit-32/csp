@@ -9,7 +9,7 @@ pubDate: 2022-07-01T22:00:00.000Z
 draft: false
 ---
 
-# Lecture 1 
+# Anyways
 
 This is the first lecture of the course.
 

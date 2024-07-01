@@ -2,48 +2,71 @@
 import TitlePage from '@/components/TitlePage'
 import BaseLayout from '@/layouts/BaseLayout'
 import Card from '@/components/Card'
-import { getPosts } from '@/utils'
+import KanbanBoard from '../components/KanbanBoard.astro';
 
-const MAX_POSTS = 5 // max number of posts to show on the home page
-const posts = await getPosts(MAX_POSTS)
+const columns = [
+  {
+    name: 'To Do',
+    tasks: [
+      { name: 'DSA', category: 'problem-solving' },
+      { name: 'MERN', category: 'dev' },
+	  { name: 'Product Management', category: 'elective' },
+	  { name: 'Nand2Tetris', category: 'core' }
+    ]
+  },
+  {
+    name: 'In Progress',
+    tasks: [
+      { name: 'API Design & Development', category: 'dev++' },
+      { name: 'System Design Intro', category: 'dev++' }
+    ]
+  },
+  {
+    name: 'Done',
+    tasks: [
+      { name: 'springboot intro', category: 'dev' }
+    ]
+  }
+];
+
 ---
 
 <BaseLayout title='Home'>
-	<TitlePage title='Computer Science Primer' />
+	<TitlePage title='Computer Science Primer'> 
+		Welcome to <b>Computer Science Primer</b>. This website aims to introduce you to the fascinating world of Computer Science. 
+		Our goal is not to turn you into a mere <i>Web Developer or an algorithm-memorizing robot</i>. 
+		Instead, we strive to help you 
+		<span class="px-2 font-normal tracking-wide border-b-2 border-teal-400  dark:bg-zinc-700">think like an Innovator</span>, 
+		<span class=" px-2 font-normal border-b-2 border-teal-400  dark:bg-zinc-700">dream like an Artist</span>, 
+		and <span class=" px-2 font-normal border-b-2 border-teal-400 dark:bg-zinc-700">execute like an Engineer</span>.
 
-	<h1 class="title text-4xl font-semibold"> Paths </h1>
-	<div class="flex">
+	</TitlePage>
+
+	<h1 class="title text-4xl font-semibold mb-10 text-center"> Paths </h1>
+	<div class="flex flex-wrap justify-center">
 	<Card title='Problem Solving' 
-	description='Learn how to solve problems using algorithms and data structures.' 
-	links={[{ href: '/problem-solving', text: 'Start Path' }]} />
+	description='Learn how to solve problems using algorithms and data structures.' />
 
 	
 	<Card title='Development' 
-	description='Learn to build web applications using modern tools and technologies.' 
-	links={[{ href: '/development', text: 'Start Path' }]} />
+	description='Learn to build web applications using modern tools and technologies.' />
 
 	
 	<Card title='Development Plus Plus' 
-	description='Learn about System Design, Devops, and more to become a well-rounded developer.' 
-	links={[{ href: '/development-plus', text: 'Start Path' }]} />
+	description='Learn about System Design, Devops, and more to become a well-rounded developer.'  />
 
 	
 	<Card title='Core Computer Science' 
-	description='Learn about the core concepts of computer science like Operating Systems, Networking, and more.' 
-	links={[{ href: '/core', text: 'Start Path' }]} />
+	description='Learn about the core concepts of computer science like Operating Systems, Networking, and more.' />
+
+	<Card title='Electives' 
+	description='From Artificial Intelligence to Product Management, get an intro to various topics' />
+
 
 	</div>
 
-	<!-- <h1 class="title text-4xl font-semibold"> Recent Posts </h1> -->
-	<!-- <div class="flex flex-wrap">
-		{posts.map((post) => (
-			<Card title={post.title} description={post.description} links={[{ href: post.slug, text: 'Read Post' }]} />
-		))}
-	</div> -->
-
-
-	<!-- <h1 class="title text-4xl font-semibold"> Progress </h1> -->
-
+	<h1 class="title text-4xl font-semibold text-center"> Progress </h1>
+	<KanbanBoard columns={columns} />
 
 </BaseLayout>
 

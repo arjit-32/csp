@@ -1,22 +1,29 @@
 ---
-import TitlePage from '@/components/TitlePage'
-import BaseLayout from '@/layouts/BaseLayout'
-import { COURSES } from '@/data/courses'
+import TitlePage from '@/components/TitlePage';
+import BaseLayout from '@/layouts/BaseLayout';
+import { COURSES } from '@/data/courses';
+import Card from '@/components/Card';
+import { getCourseMeta } from '@/utils';
 
-
+const courseMetaList = await Promise.all(
+  COURSES.map(async (course) => {
+    const meta = await getCourseMeta(course);
+    return { course, meta: meta[0].data };
+  })
+);
 ---
+
 <BaseLayout title='Courses'>
-	<TitlePage title='Courses' />
-	<div class='flex justify-center flex-wrap gap-4'>
-		{
-			COURSES.map((course: string) => (
-				<a
-					href={`/courses/${course}`}
-					class='inline-block bg-gray-200  rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2'
-				>
-					#{course}
-				</a>
-			))
-		}
-	</div>
+  <TitlePage title='Courses'>
+    <p>Choose a course to start learning.</p>
+  </TitlePage>
+  <div class='flex justify-center flex-wrap gap-4'>
+    {courseMetaList.map(({ course, meta }) => (
+      <Card
+        title={meta.title}
+        description={meta.description}
+        links={[{ href: `/courses/${course}`, text: 'Checkout Course' }]}
+      />
+    ))}
+  </div>
 </BaseLayout>

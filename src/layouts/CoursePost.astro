@@ -28,17 +28,18 @@ const articleDate = pubDate.toISOString()
 	<article class='min-w-full md:py-4 sm:max-w-none md:max-w-none'>
 		<header class='mb-3 flex flex-col justify-center items-center gap-6'>
 			<div class='flex flex-col gap-2'>
-				<div class='flex items-center justify-center gap-x-1'>
-					<p class='text-center text-sm text-opacity-50'>
-						Published <FormattedDate date={pubDate} />
-					</p>
-					<p class='text-center text-sm text-opacity-50 font-bold'>
-						- {readTime}
-					</p>
-				</div>
+			
 				<h1 class='text-center text-4xl md:text-6xl md:pb-2.5 font-semibold'>
 					{title}
 				</h1>
+				<div class='flex items-center justify-center gap-x-1'>
+					<p class='text-center text-sm text-opacity-50'>
+						 <FormattedDate date={pubDate} />
+					</p>
+					<p class='text-center text-sm text-opacity-50 font-bold'>
+						| {readTime}
+					</p>
+				</div>
 			</div>
 
 		</header>

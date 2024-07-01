@@ -9,22 +9,19 @@ import CoursePost from '@/layouts/CoursePost';
 import Share from '@/components/Share';
 import TableOfContents from '@/components/TableOfContents';
 
-
 export async function getStaticPaths() {
+  const staticPaths = [];
 
-  const staticPaths =[];
-
-  for(const course of COURSES){
-
+  for (const course of COURSES) {
     const courseMeta = await getCourseMeta(course);
-    if(courseMeta.length === 0){
+    if (courseMeta.length === 0) {
       continue;
     }
     const navbar = courseMeta[0].data.navbar;
     // Gather all links from the navbar
-    for(const nav of navbar){
-      if(nav.link){
-        for(const link of nav.link){
+    for (const nav of navbar) {
+      if (nav.link) {
+        for (const link of nav.link) {
           staticPaths.push({
             params: {
               course: course,
@@ -34,55 +31,63 @@ export async function getStaticPaths() {
               course: course,
               lecture: link
             }
-          })
+          });
         }
       }
     }
-
   }
 
   return staticPaths;
 }
-
 
 const { course, lecture } = Astro.props;
 const slug = `${course}/${lecture}`;
 
 const post = await getEntry('courses', slug);
 
-const { Content, headings, remarkPluginFrontmatter } = await post.render()
+const { Content, headings, remarkPluginFrontmatter } = await post.render();
+
+const courseMeta = await getCourseMeta(course);
 ---
+
 <CoursePost
-	id={post.id}
-	data={post.data}
-	headings={headings}
-	readTime={remarkPluginFrontmatter.minutesRead}
+  id={post.id}
+  data={post.data}
+  headings={headings}
+  readTime={remarkPluginFrontmatter.minutesRead}
 >
+  <div class='grid grid-cols-1 md:grid-cols-[20%_60%_20%] gap-10 mt-8'>
+    <div class="border-r-2">
+      <nav class='mt-8'>
+        {courseMeta[0].data.navbar.map((item, index) => (
+          <div class='mb-4'>
+            <h2 class='text-xl font-semibold mb-2'>{item.subheading}</h2>
+            <ul class='list-none space-y-2'>
+              {item.link.map((i) => (
+                <li class='mb-1'>
+                  <a href={`/courses/${course}/${i}`} class='text-blue-600 hover:underline'>
+                    {i}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </div>
 
+    <article class='max-w-full w-full'>
+      <div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
+        <Content components={{ pre: Code, SButton }} />
+      </div>
+      <footer></footer>
+    </article>
 
-
-
-<div class='grid grid-cols-1 md:grid-cols-[20%_60%_20%] gap-10 mt-8'>
-
-  <div>
-    <h1 class='text-4xl font-bold dark:text-gray-100'>{post.data.title}</h1>
-    <p class='text-lg dark:text-gray-300'>{post.data.description}</p>
+    <aside class='md:flex flex-col gap-8 hidden'>
+      <Share />
+      <div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
+        {headings && headings.length > 0 && <TableOfContents {headings} />}
+      </div>
+    </aside>
   </div>
-
-<article class='max-w-full w-full'>
-  <div class='prose prose-lg md:prose-xl dark:prose-invert mb-12 min-w-full'>
-    <Content components={{ pre: Code, SButton }} />
-  </div>
-
-  <footer>
-  </footer>
-</article>
-
-<aside class='md:flex flex-col gap-8 hidden'>
-  <Share />
-  <div class='sticky top-24 self-start hidden md:block transition-all duration-200'>
-    {headings && headings.length > 0 && <TableOfContents {headings} />}
-  </div>
-</aside>
-</div>
 </CoursePost>
