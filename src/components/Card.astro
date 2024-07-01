@@ -9,7 +9,7 @@ links = links || []
         <p class="mt-3">{description}</p>
     </div>
     <ul class="flex mt-3">
-        {links.map((link: string) => (
+        {links.map((link: { href: string | URL | null | undefined; text: unknown }) => (
             <li class="text-gray-900 bg-gray-300 font-medium rounded-md p-2"> <a href={link.href}>{link.text}</a> </li>
         ))}
     </ul>

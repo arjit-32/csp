@@ -44,7 +44,11 @@ const { course, lecture } = Astro.props;
 const slug = `${course}/${lecture}`;
 
 const post = await getEntry('courses', slug);
-
+if(!post) {
+  return {
+    status: 404
+  };
+}
 const { Content, headings, remarkPluginFrontmatter } = await post.render();
 
 const courseMeta = await getCourseMeta(course);
