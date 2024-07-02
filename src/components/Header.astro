@@ -25,24 +25,11 @@ import ToggleTheme from './ToggleTheme.astro'
 			<div
 				class='flex flex-col gap-4 md:flex-row md:border-r-2 border-black pr-4 dark:border-white'
 			>
-				<HeaderLink href='/unprepped' class='flex items-center gap-1 text-lg md:text-base'>
-					<TagIcon /> Unprepped
-				</HeaderLink>
 				
 				<HeaderLink href='/courses' class='flex items-center gap-1 text-lg md:text-base'>
 					<TagIcon /> Courses
 				</HeaderLink>
 			</div>
-			
-			<!-- <div class='flex justify-center items-center md:justify-end gap-3 md:p-0'>
-				{
-					SOCIALNETWORKS.map((network) => (
-						<HeaderLink class='' href={network.url} target='_blank' aria-label={network.name}>
-							<span>{<network.icon />} </span>
-						</HeaderLink>
-					))
-				}
-			</div> -->
 		</nav>
 	</div>
 

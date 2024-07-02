@@ -9,15 +9,6 @@ pubDate: 2022-07-01T22:00:00.000Z
 draft: false
 ---
 
-# Anyways
+# Introduction
 
 This is the first lecture of the course.
-
-```java
-public class Main {
-  public static void main(String[] args) {
-    System.out.println("Hello, World!");
-  }
-}
-```
-

@@ -184,9 +184,7 @@ declare module 'astro:content' {
 	>;
 
 	type ContentEntryMap = {
-		"blog": {
-};
-"courses": {
+		"courses": {
 "api-design/lec1.md": {
 	id: "api-design/lec1.md";
   slug: "api-design/lec1";
